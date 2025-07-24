@@ -1,96 +1,23 @@
-/* Reset and base styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
-}
+.floating-label {
+  @apply absolute left-3 top-3 text-gray-500 text-sm transition-all bg-white px-1;
 
-body {
-  background: linear-gradient(120deg, #2980b9, #6dd5fa);
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Container */
-.login-container {
-  background-color: white;
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  width: 300px;
-}
-
-/* Form */
-.login-form h2 {
-  text-align: center;
-  margin-bottom: 25px;
-  color: #333;
-}
-
-/* Input group for floating labels */
-.input-group {
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.input-group input {
-  width: 100%;
-  padding: 12px 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-  outline: none;
-}
-
-.input-group label {
+  /* fallback if @apply not supported */
   position: absolute;
-  top: 12px;
-  left: 10px;
-  color: #777;
+  left: 12px;
+  top: 14px;
   background: white;
-  padding: 0 5px;
-  transition: 0.3s;
+  padding: 0 4px;
+  color: #6b7280;
+  font-size: 0.875rem;
   pointer-events: none;
+  transition: all 0.2s ease;
 }
 
-/* Float label when input is focused or has value */
-.input-group input:focus + label,
-.input-group input:not(:placeholder-shown):valid + label {
-  top: -10px;
-  left: 8px;
-  font-size: 12px;
-  color: #2980b9;
-}
-
-/* Submit button */
-.login-form button {
-  width: 100%;
-  padding: 12px;
-  background-color: #2980b9;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background 0.3s ease;
-}
-
-.login-form button:hover {
-  background-color: #1a6fa5;
-}
-
-/* Message */
-.login-form .message {
-  margin-top: 15px;
-  text-align: center;
-  font-size: 14px;
-  color: #777;
-}
-
-.login-form .message a {
-  color: #2980b9;
-  text-decoration: none;
+/* Move label up when input is focused or filled */
+.peer:focus ~ .floating-label,
+.peer:not(:placeholder-shown) ~ .floating-label {
+  top: 6px;
+  left: 10px;
+  font-size: 0.75rem;
+  color: #2563eb;
 }
